@@ -390,7 +390,7 @@ class Boundary extends React.Component<{ children: React.ReactNode; fallback: Re
 // Keep vertical swipes scrolling the page on touch screens; horizontal drags rotate the model.
 function TouchFix() {
   const gl = useThree((s) => s.gl);
-  useEffect(() => { gl.domElement.style.touchAction = 'pan-y'; }, [gl]);
+  useEffect(() => { gl.domElement.style.touchAction = 'none'; }, [gl]);
   return null;
 }
 
@@ -469,7 +469,6 @@ export default function Headphone3D({
         </Suspense>
 
         <OrbitControls
-          enabled={typeof window !== 'undefined' ? window.innerWidth >= 768 : true}
           enableZoom={false}
           enablePan={false}
           enableDamping

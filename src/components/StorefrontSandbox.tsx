@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll, useTransform } from 'framer-motion';
-import { Check, Clock, Plus, ShieldCheck, Star, X } from 'lucide-react';
+import { Check, ChevronDown, ChevronUp, Clock, Plus, ShieldCheck, Star, X } from 'lucide-react';
 import { SURVEY, UXMode } from '@/data/mockData';
 import { FINISH, type FinishKey } from '@/data/finishes';
 import { logSession, sheetEnabled, type Sequence } from '@/lib/sheet';
@@ -589,6 +589,27 @@ export default function StorefrontSandbox({ sessions, onComplete }: { sessions: 
           </motion.div>
         )}
       </AnimatePresence>
+         {/* Mobile-only Up/Down scroll helper */}
+   <div className="fixed bottom-3 left-3 z-30 flex items-center gap-1 rounded-full border border-white/15 bg-[#0B0D12]/90 p-1 shadow-2xl backdrop-blur-xl md:hidden">
+     <button
+       type="button"
+       aria-label="Scroll up"
+       onClick={() => window.scrollBy({ top: -window.innerHeight * 0.85, behavior: 'smooth' })}
+       className="flex h-8 w-8 items-center justify-center rounded-full text-white/80 active:bg-white/20"
+     >
+       <ChevronUp className="h-4 w-4" />
+     </button>
+     <div className="h-4 w-px bg-white/15" />
+     <button
+       type="button"
+       aria-label="Scroll down"
+       onClick={() => window.scrollBy({ top: window.innerHeight * 0.85, behavior: 'smooth' })}
+       className="flex h-8 w-8 items-center justify-center rounded-full text-white/80 active:bg-white/20"
+     >
+       <ChevronDown className="h-4 w-4" />
+     </button>
+   </div>
+
     </section>
   );
 }
