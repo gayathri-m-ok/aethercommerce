@@ -120,11 +120,14 @@ function ShowcaseStage({ dark, finish, onFinishChange }: { dark: boolean; finish
           </div>
           </div>
           <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 flex flex-col items-center gap-1 px-4 pb-3 text-center">
-            <p className="font-[family-name:var(--font-mono)] text-[11px] tracking-[0.2em] text-slate-500">DRAG TO ROTATE · SCROLL TO EXPLORE</p>
-            <p className={`max-w-xl text-xs leading-snug transition-colors duration-700 ${light ? 'text-slate-600' : 'text-slate-400'}`}>
+            <p className="font-[family-name:var(--font-mono)] text-[10px] tracking-[0.18em] text-slate-500 sm:text-[11px] sm:tracking-[0.2em]">
+              <span className="hidden md:inline">DRAG TO ROTATE · </span>SCROLL TO EXPLORE
+            </p>
+            <p className={`max-w-xl text-[11px] leading-snug transition-colors duration-700 sm:text-xs ${light ? 'text-slate-600' : 'text-slate-400'}`}>
               Establishing realistic product attachment and purchase intent before introducing checkout friction.
             </p>
           </div>
+
         </div>
 
         {/* Feature callout (z-30) */}
@@ -365,11 +368,11 @@ export default function StorefrontSandbox({ sessions, onComplete }: { sessions: 
       <MarqueeDivider />
       <ShowcaseStage dark={dark} finish={finish} onFinishChange={setFinish} />
 
-      <div className="px-5 pb-24 pt-16 sm:pb-32">
+      <div className="px-3 pb-28 pt-16 sm:px-5 sm:pb-32">
         {/* Apple-style segmented switcher */}
-        <div className="mx-auto mb-10 flex w-fit rounded-full border border-white/10 bg-white/5 p-1 backdrop-blur-2xl" role="tablist" aria-label="UX mode">
+        <div className="mx-auto mb-8 flex w-fit max-w-full rounded-full border border-white/10 bg-white/5 p-1 backdrop-blur-2xl sm:mb-10" role="tablist" aria-label="UX mode">
           {([['dark', 'Traditional UI'], ['ethical', 'Ethical UI']] as const).map(([k, label]) => (
-            <button key={k} role="tab" aria-selected={mode === k} onClick={() => setMode(k)} className="relative rounded-full px-5 py-2.5 text-sm font-semibold sm:px-7">
+            <button key={k} role="tab" aria-selected={mode === k} onClick={() => setMode(k)} className="relative rounded-full px-4 py-2 text-xs font-semibold sm:px-7 sm:py-2.5 sm:text-sm">
               {mode === k && <motion.span layoutId="seg" className="absolute inset-0 rounded-full bg-white/15" transition={{ type: 'spring', stiffness: 400, damping: 32 }} />}
               <span className={`relative ${mode === k ? 'text-white' : 'text-white/50'}`}>{label}</span>
             </button>
@@ -380,13 +383,14 @@ export default function StorefrontSandbox({ sessions, onComplete }: { sessions: 
           <motion.div
             key={mode}
             initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.35 }}
-            className={`mx-auto mt-10 grid max-w-4xl gap-8 rounded-3xl border p-6 backdrop-blur-2xl sm:p-10 md:grid-cols-2 ${dark ? 'border-red-500/30 bg-red-950/20' : 'border-white/10 bg-white/[0.04]'}`}
+            className={`mx-auto mt-6 grid w-full max-w-4xl gap-6 overflow-hidden rounded-3xl border p-4 backdrop-blur-2xl sm:mt-10 sm:gap-8 sm:p-10 md:grid-cols-2 ${dark ? 'border-red-500/30 bg-red-950/20' : 'border-white/10 bg-white/[0.04]'}`}
           >
-            <div className="flex flex-col justify-center gap-3">
+            <div className="flex min-w-0 flex-col justify-center gap-3">
               <p className="font-[family-name:var(--font-mono)] text-xs tracking-[0.2em] text-slate-400">{PRODUCT.brand} · MODEL {PRODUCT.model}</p>
-              <h3 className="text-3xl font-semibold tracking-tight sm:text-4xl">{PRODUCT.name}</h3>
+              <h3 className="text-2xl font-semibold tracking-tight sm:text-4xl">{PRODUCT.name}</h3>
               <p className="text-slate-400">Finish: {FINISH[finish].name}</p>
-              <div className={`relative mt-3 h-80 cursor-grab overflow-hidden rounded-2xl transition-colors duration-500 active:cursor-grabbing sm:h-[26rem] ${
+              <div className={`relative mt-3 h-72 w-full overflow-hidden rounded-2xl transition-colors duration-500 sm:h-[26rem] md:cursor-grab md:active:cursor-grabbing ${
+
                  finish === 'white'
                   ? 'border border-white/10 bg-[#07080B]'
                   : 'bg-[radial-gradient(circle_at_center,#F8FAFC_0%,#CBD5E1_100%)]'

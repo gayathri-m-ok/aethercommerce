@@ -469,6 +469,7 @@ export default function Headphone3D({
         </Suspense>
 
         <OrbitControls
+          enabled={typeof window !== 'undefined' ? window.innerWidth >= 768 : true}
           enableZoom={false}
           enablePan={false}
           enableDamping
@@ -477,6 +478,7 @@ export default function Headphone3D({
           minPolarAngle={Math.PI / 3.2}
           maxPolarAngle={Math.PI / 1.7}
         />
+
         <TouchFix />
       </Canvas>
       </div>

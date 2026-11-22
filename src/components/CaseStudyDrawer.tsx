@@ -112,7 +112,7 @@ function LiveSection({ dark, ethical, source, reduce }: { dark: ModeStats; ethic
       <p className="mb-5 text-xs leading-relaxed text-slate-500">
         Traditional n = {dark.n} · Ethical n = {ethical.n}.{' '}
         {source === 'live'
-          ? 'Anonymous ratings from visitors of this demo, refreshed every few seconds.'
+          ? 'Anonymous ratings from verified study participants (?study=1), refreshed every few seconds.'
           : 'Illustrative baseline until live sessions arrive.'}
       </p>
       {LIVE_METRICS.map((m) => {
@@ -204,7 +204,7 @@ export default function CaseStudyDrawer({
       {/* Floating trigger pill */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 rounded-full border border-white/15 bg-[#0B0D12]/75 px-5 py-3 text-sm text-white shadow-2xl backdrop-blur-2xl transition-colors hover:bg-[#0B0D12]/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-400"
+        className="fixed bottom-3 right-3 z-30 flex items-center gap-2 rounded-full border border-white/15 bg-[#0B0D12]/90 px-3 py-2 text-xs font-medium text-white shadow-2xl backdrop-blur-xl transition hover:border-emerald-400/40 hover:bg-white/10 sm:bottom-6 sm:right-6 sm:px-4 sm:py-2.5 sm:text-sm"
       >
         <span className="relative flex h-2.5 w-2.5">
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
