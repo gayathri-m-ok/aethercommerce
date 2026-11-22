@@ -7,6 +7,6 @@ body { font-family: var(--font-jakarta), system-ui, sans-serif; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 html,
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100%;
 }
